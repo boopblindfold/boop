@@ -1,0 +1,52 @@
+{% extends 'NotLoggedIn/base.html' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+    <div class="right_col" role="main">
+        <div class="">
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title" style="text-align: center; ">
+                            <h2 style="width: 100%;">LOG IN</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="login">
+                                <div>
+
+                                    <div class="login_wrapper">
+                                        <div class="animate form login_form">
+                                            <section class="login_content">
+                                                <form action="{% url 'Survey:Log In' %}" method="post">
+                                                    {% csrf_token %}
+                                                    {{ form.as_p }}
+                                                    <div>
+                                                        <input type="submit" value="Log In" class="btn btn-default submit">
+                                                        <a class="reset_pass" href="{% url 'Survey:password-reset' %}">Lost your password?</a>
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+
+                                                    <div class="separator">
+                                                        <p class="change_link">New to site?
+                                                            <a href="{%  url 'Survey:Register' %}" class="to_register"> Create Account </a>
+                                                        </p>
+                                                    </div>
+                                                </form>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

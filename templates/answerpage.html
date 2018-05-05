@@ -1,0 +1,65 @@
+{% extends extended_template %}
+{% load staticfiles %}
+{% block title %} Answer Survey {% endblock %}
+
+{% block content %}
+	<div class="right_col" role="main">
+	<div class="">
+		<div class="clearfix"></div>
+
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="x_panel">
+					<div class="x_content">
+                    {% if token.has_answered == 0 and hasAns != 1%}
+                            <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                                <div style="text-align: center;  ">
+                                    {% if question.image.url != null %}
+                                        <img src="{{ question.image.url }}">
+                                    {% endif %}
+                                     <h1 style="font-size: 60px; margin-bottom: 50px;">{{ question.description }} </h1>
+                                </div>
+                                     {% if question.type == 'Text' %}
+                                        {% csrf_token %}
+                                        <input type=hidden name="question_id" value="{{ question.id }}">
+                                        {% for field in form %}
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <span class="text-danger small">{{ field.errors }}</span>
+                                                </div>
+                                                <div style="margin-left: 20%">{{ field }}</div>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+	                            <div style="margin-left: 43%;">
+                                {% if question.type == 'Multiple Choice' or question.type == 'True or False' or question.type == 'Range' %}
+                                    {% csrf_token %}
+                                    <input type=hidden name="question_id" value="{{ question.id }}">
+	                                {% for choice in question.choice_set.all %}
+	                                    <div style="margin-top: 1px;">
+		                                    <input type="radio" name="answer" value="{{ choice.choice }}" id="l_box1" style="margin-right: 10px; display: inline-block"><label for="l_box1">{{ choice.choice }}</label>
+	                                    </div>
+	                                    <br>
+                                    {% endfor %}
+
+                                {% endif %}
+
+                        <div class="form-group" style="margin-top: 10px;">
+                            <div style="margin-left: -10px">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+	                            </div>
+                        </form>
+                    {% elif token.has_answered == 1 %}
+                        {% include 'pinUsed.html' %}
+                    {% elif hasAns == 1 %}
+                        {% include 'pinUsedForThisQuestion.html' %}
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'LoggedIn/base.html' %}
+{% load staticfiles %}
+{% block title %} Invite Contact {% endblock %}
+
+{% block content %}
+    <table class="table">
+        <tbody>
+        {% for contact in ContactList.contact_set.all %}
+            <tr>
+                <td>{{ contact.first_name }}</td><td>{{ contact.last_name }}</td>
+                <td>
+                <form action="{% url 'Survey:invite' id=Survey.id contact_id=contact.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-xs">
+                        <span class="glyphicon glyphicon-remove"></span>&nbsp; Send Invite
+                    </button>
+                </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>table>
+        <a href="{% url 'Survey:loggedHome' %}" style="text-align: center;">
+            <button style="margin-top: 4%; size: 20px; text-align: center;">
+                Done
+            </button>
+        </a>
+
+{% endblock %}

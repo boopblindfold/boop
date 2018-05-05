@@ -1,0 +1,33 @@
+{% extends 'LoggedIn/base.html' %}
+{% load staticfiles %}
+{% block title %} Contact List {% endblock %}
+
+<!-- page content -->
+{% block content %}
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+	                    <div class="x_content">
+                            <h1 style="text-align: center;  font-size: 40px;"><b>You need to have a contact list to create normal survey</b></h1>
+
+                           <div class="mid_center">
+
+                            <a href="{% url 'Survey:contactlist-create' userid=user.id %}" style="text-align: center;">
+                                <button class="btn btn-success">
+                                    Create a Contact List
+                                </button>
+                            </a>
+	                           <a href="{% url 'Survey:survey-type' %}" style="  margin-left: 50px;text-align: center;">
+		                           <button class="btn btn-warning">
+			                           Go Back
+		                           </button>
+	                           </a>
+                           </div>
+                        </div></div></div></div></div></div>
+{% endblock %}
+<!-- /page content -->
+

@@ -1,0 +1,58 @@
+{% extends 'LoggedIn/base.html' %}
+{% load static %}
+
+        <!-- /page content -->
+        {%  block survey_active %}active{% endblock %}
+
+        {% block content %}
+	        <div class="right_col" role="main">
+		        <div class="">
+			        <div class="clearfix"></div>
+
+			        <div class="row">
+				        <div class="col-md-12 col-sm-12 col-xs-12" >
+					        <div class="x_panel">
+						        <div class="x_content">
+							        {% if user.contactlist_set.all.count != 0 %}
+								        <a href="{% url 'Survey:normal-survey-create' %}" style="text-align: center; margin: 0 100px;">
+									        <button class="btn btn-success" >
+										        Create Normal Survey
+									        </button>
+								        </a>
+							        {% else %}
+								        <a href="{% url 'Survey:survey-normal-no-contact' %}" style="text-align: center; margin: 0 100px;">
+									        <button class="btn btn-success" >
+										        Create Normal Survey
+									        </button>
+								        </a>
+							        {% endif %}
+							        <a href="{% url 'Survey:quick-survey-create' %}" style="text-align: center; margin: 0 100px">
+								        <button class="btn btn-success" >
+									        Create Quick Survey
+								        </button>
+							        </a>
+						        </div>
+                            <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+	                            {% for field in form %}
+		                            <div class="form-group">
+			                            <div class="col-sm-offset-2 col-sm-10">
+				                            <span class="text-danger small">{{ field.errors }}</span>
+			                            </div>
+			                            <label class="control-label col-sm-2" style="width: 200px;">{{ field.label_tag }}</label>
+			                            {{ field }}
+		                            </div>
+	                            {% endfor %}
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+					        </div>
+				        </div>
+			        </div>
+		        </div>
+	        </div>
+	        </div>
+        {% endblock %}

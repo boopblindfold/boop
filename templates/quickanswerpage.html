@@ -1,0 +1,52 @@
+{% extends extended_template %}
+{% load staticfiles %}
+{% block title %} Answer Survey {% endblock %}
+
+{% block content %}
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                                        {% if question.image.url != null %}
+                                            <img src="{{ question.image.url }}">
+                                        {% endif %}
+                                        <h1> {{ question.description }} </h1>
+                                        {% if question.type == 'Text' %}
+                                            {% csrf_token %}
+                                            <input type=hidden name="question_id" value="{{ question.id }}">
+                                            {% for field in form %}
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <span class="text-danger small">{{ field.errors }}</span>
+                                                    </div>
+                                                    {#                                              <label class="control-label col-sm-2">{{ field.label_tag }}</label>#}
+                                                    <div class="col-sm-10">{{ field }}</div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        {% if question.type == 'Multiple Choice' or question.type == 'True or False' or question.type == 'Range' %}
+                                            {% csrf_token %}
+                                            <input type=hidden name="question_id" value="{{ question.id }}">
+                                            {% for choice in question.choice_set.all %}
+                                                <input type="radio" name="answer" value="{{ choice.choice }}" id="l_box1" style="margin-right: 10px;"><label for="l_box1">{{ choice.choice }}</label>
+	                                            <br>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+        </div>
+{% endblock %}

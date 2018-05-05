@@ -1,0 +1,38 @@
+{% extends 'LoggedIn/base.html' %}
+{% load staticfiles %}
+{% block title %} Survey Type {% endblock %}
+
+<!-- page content -->
+{% block content %}
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+
+                        <div class="x_content">
+                            <div style="text-align: center">
+                                {% if user.contactlist_set.all.count != 0 %}
+                                    <a href="{% url 'Survey:normal-survey-create' %}" style="text-align: center; margin: 0 100px;">
+                                        <button class="btn btn-success" >
+                                            Create Normal Survey
+                                        </button>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'Survey:survey-normal-no-contact' %}" style="text-align: center; margin: 0 100px;">
+                                        <button class="btn btn-success" >
+                                            Create Normal Survey
+                                        </button>
+                                    </a>
+                                {% endif %}
+                                <a href="{% url 'Survey:quick-survey-create' %}" style="text-align: center; margin: 0 100px">
+                                    <button class="btn btn-success" >
+                                        Create Quick Survey
+                                    </button>
+                                </a>
+                            </div>
+                        </div></div></div></div></div></div>
+{% endblock %}
+<!-- /page content -->

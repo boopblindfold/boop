@@ -1,0 +1,56 @@
+{% extends 'LoggedIn/base.html' %}
+{% load staticfiles %}
+{% block title %} Create Contact List {% endblock %}
+
+{% block content %}
+	<div class="right_col" role="main">
+		<div class="">
+			<div class="clearfix"></div>
+
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title"><h3>Manage Contacts</h3></div>
+						<div class="x_content">
+                        Share this link with the people you want to add in your contact list so they can enter their info and be added http://127.0.0.1:8000{% url 'Survey:contact-from-link' userid=user.id contactlistid=contactlist.id %}
+                <div>
+	                <div style=" float: left;">
+		                <a href="{% url 'Survey:contact-form' contactlistid=contactlist.id %}" style="text-align: center;">
+			                <button  class="btn btn-success">
+				                Add Contact
+			                </button>
+		                </a>
+	                </div>
+	                <a href="{% url 'Survey:Profile' %}" style="text-align: center;">
+		                <button  class="btn btn-success"  style="float: right;">
+			                Done
+		                </button>
+	                </a>
+                </div>
+            {% if Survey.question_set.count != 0 %}
+	            <table class="table">
+		            <tbody>
+		            {% for contact in contactlist.contact_set.all %}
+			            <tr>
+				            <td>{{ contact.first_name }}</td><td>{{ contact.last_name }}</td><td>{{ contact.email }}</td>
+				            <td>
+					            <form action="{% url 'Survey:delete-contact-during' contactlistid=contactlist.id contactid=contact.id%}" method="post" style=" float: right; display: inline;">
+						            {% csrf_token %}
+						            <input type="hidden" name="contact_id" value="{{ contact.id }}" />
+						            <button type="submit" class="btn btn-danger btn-xs" style="float: right; width: fit-content; height: fit-content">
+							            <span class="glyphicon glyphicon-remove"></span>&nbsp;
+						            </button>
+					            </form>
+				            </td>
+			            </tr>
+		            {% endfor %}
+		            </tbody>
+	            </table>
+            {% endif %}
+
+        </div>
+
+    </div>
+				</div></div></div></div>
+</div>
+{% endblock %}

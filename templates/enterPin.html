@@ -1,0 +1,28 @@
+{% extends extented_template %}
+{% load staticfiles %}
+{% block title %} Enter Pin {% endblock %}
+
+<!-- page content -->
+        {% block content %}
+	        <div class="right_col" role="main">
+	        <div class="">
+	        <div class="clearfix"></div>
+
+	        <div class="row">
+	        <div class="col-md-12 col-sm-12 col-xs-12">
+	        <div class="x_panel">
+
+	        <div class="x_content">
+            <form action="{% url 'Survey:verifyToken' id=Survey.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 style="text-align: center; font-size: 40px;"><b>Enter Pin</b></h1>
+                <input style="margin-left: 37%; width: 300px;" type="text" name="tokenpin">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10" >
+                        <button type="submit" style="margin-left: 35%; margin-top: 30px" class="btn btn-success btn-lg">Submit</button>
+                    </div>
+                </div>
+            </form>
+	        </div></div></div></div></div></div>
+        {% endblock %}
+        <!-- /page content -->

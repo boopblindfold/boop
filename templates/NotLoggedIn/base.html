@@ -1,0 +1,137 @@
+{% load staticfiles %}
+<html lang="en-us">
+<head>
+    <!-- Bootstrap -->
+    <link href="{% static 'css/vendors/bootstrap/dist/css/bootstrap.min.css'%}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'css/vendors/font-awesome/css/font-awesome.min.css'%}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'css/vendors/nprogress/nprogress.css'%}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static '/css/custom.css'%}" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+	<style type="text/css">
+		input{
+			padding-left: 10px;
+			width: 200px;!important;
+		}
+		.search-container button{
+			width: 20px;
+			height: 20px;
+			background: none;
+			border: none;
+		}
+		#searchIcon{
+			color: #0D3349;
+			font-size: 15px;
+		}
+		.search-container input{
+			padding-left: 10px;
+		}
+		.navbar-toggle{
+			margin-right: 30px;
+		}
+
+		@media (min-width: 768px) {
+			.searchBar{
+				float: right;
+			}
+		}
+		@media screen and (max-width: 768px) and (min-width: 488px) {
+			.navbar-brand-centered{
+				left: 39%;
+			}
+
+		}
+		.question{
+			width: 100%;
+		}
+
+		.navbar-header {
+			background-color: rgb(41, 63, 82);
+		}
+	</style>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+	                        <div class="brand" style="float: left">
+		                        <a href="{% url 'Home' %}">
+		                        <div class="navbar-brand navbar-brand-centered" style="background-color: rgb(41, 63, 82); border-radius: 4px"><img  style="margin-left: 20px;margin-top: -12px;" width="90px" height="45px" src="{% static 'Logo.png' %}"></div>
+		                        </a>
+	                        </div>
+
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="navbar-brand-centered">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{% url 'Home' %}">Home</a></li>
+                                <li><a href="{% url 'Survey:Log In' %}">Log In</a></li>
+                                <li><a href="{% url 'aboutUs' %}">About Us</a></li>
+                                <li><a href="{% url 'contactUs' %}">Contact Us</a></li>
+                            </ul>
+	                            <div class="searchBar">
+		                            <form action="{% url 'Survey:search' %}" method="POST">
+			                            {% csrf_token %}
+			                            <div class="search-container">
+				                            <input type="text" placeholder="Search" name="search">
+				                            <button type="submit"><i id="searchIcon" class="glyphicon glyphicon-search" alt=""></i></button>
+			                            </div>
+		                            </form>
+	                            </div>
+
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        {% block content %}
+
+        {% endblock %}
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <hr width="50%;">
+            <div class="pull-center">
+                <a href="{% url 'aboutUs' %}">BlindFold Copyright &copy;</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="{%  static 'css/vendors/jquery/dist/jquery.min.js'%}"></script>
+<!-- Bootstrap -->
+<script src="{%  static 'css/vendors/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+<!-- FastClick -->
+<script src="{%  static 'css/vendors/fastclick/lib/fastclick.js'%}"></script>
+<!-- NProgress -->
+<script src="{%  static 'css/vendors/nprogress/nprogress.js'%}"></script>
+
+<script src="{% static 'css/vendors/Chart.js/dist/Chart.js'  %}"></script>
+<!-- Custom Theme Scripts -->
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

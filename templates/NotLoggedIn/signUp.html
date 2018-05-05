@@ -1,0 +1,42 @@
+{% extends 'NotLoggedIn/base.html' %}
+
+{% block title %} Sign Up {% endblock %}
+
+{% block content %}
+    <div class="right_col" role="main">
+        <div class="">
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title" style="text-align: center;">
+                            <h2 style="width: 100%;">SIGN UP!</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="login">
+                                <div>
+                                    <section class="login_content" >
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            {{ form.as_p}}
+                                            <button style="margin-top: 4%;" type="submit">Create Account</button>
+
+                                        </form>
+
+                                        <button >Cancel</button>
+
+
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

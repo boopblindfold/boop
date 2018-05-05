@@ -1,0 +1,107 @@
+{% extends 'LoggedIn/base.html' %}
+{% load staticfiles %}
+{% block title %} Invite {% endblock %}
+
+<!-- page content -->
+{% block content %}
+	<script type="text/javascript">
+		window.onload = function() {
+
+
+            var showContacts = document.getElementById("showContacts");
+            showContacts.addEventListener("click", function(){
+                var contacts = document.getElementById("contacts");
+                if(contacts.style.display === "none") {
+                    contacts.style.display = "block"
+                }
+                else{
+                    contacts.style.display = "none";
+                }
+            })
+
+
+
+    }
+
+	</script>
+	<div class="right_col" role="main">
+	<div class="">
+	<div class="clearfix"></div>
+
+	<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel">
+
+	<div class="x_content">
+    <div style="text-align: center">
+
+    </div>
+<div class="inviteContainer">
+
+			<h1 style="text-align: center;margin-bottom: 10px; "><strong>Choose ContactList </strong></h1>
+			<table class="table">
+				<tbody>
+				{% for contactlist in user.contactlist_set.all %}
+
+
+					<tr style=" border-top: solid #ddd 1px;">
+						<td style=" border: none; width: 300px;">
+							<p style="margin-right: 10px; display: inline-block">{{ contactlist.name }}</p>
+							<form action="{% url 'Survey:inviteByList' id=Survey.id contactlistid=contactlist.id %}" method="post" style="display: inline-block; float: right; ">
+								{% csrf_token %}
+
+								<button type="submit" class="btn btn-default btn-small" >
+									<span class="glyphicon glyphicon-envelope"></span>&nbsp; Invite List
+								</button>
+
+							</form>
+						</td>
+						<td style=" display: inline-block; border: none; float: right">
+                            <a href="{% url 'Survey:inviteindividuallylist' id=Survey.id contactlistid=contactlist.id %}"  style="display: inline-block; float: right; ">
+                                <button  type="submit" class="btn btn-default btn-small" style="display: inline-block">
+                                    <span class="glyphicon glyphicon-envelope"></span> Select Contacts
+                                </button>
+                            </a>
+						</td>
+
+					</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+
+
+	</div>
+<div id="contacts" style="display: none; margin-top: 10px;">
+	<table class="table">
+		<tbody>
+		{% for contact in ContactList.contact_set.all %}
+			<tr>
+				<td>{{ contact.first_name }}</td><td>{{ contact.last_name }}</td>
+				<td>
+					<form action="{% url 'Survey:inviteInd' id=Survey.id contact_id=contact.id %}" method="post" style="display: inline;">
+						{% csrf_token %}
+						<button type="submit" class="btn btn-default btn-xs" style="float: right">
+							<span class="glyphicon glyphicon-envelope"></span>&nbsp; Send Invite
+						</button>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+</div>
+		<div style="text-align: center">
+
+			<a href="{% url 'Survey:loggedHome' %}" style="text-align: center;">
+				<button style="margin-top: 4%; size: 20px; text-align: center;" class="btn btn-success">
+					Done
+				</button>
+			</a>
+        </div>
+
+	    </div>
+    </div></div></div></div>
+{% endblock %}
+<!-- /page content -->

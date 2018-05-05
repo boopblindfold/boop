@@ -1,0 +1,155 @@
+{% extends 'LoggedIn/base.html' %}
+{% load staticfiles %}
+{% block title %}
+	Profile
+{% endblock %}
+{% block content %}
+	<div class="right_col" role="main">
+	<div class="">
+	<div class="clearfix"></div>
+
+	<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel">
+
+	<div class="x_content">
+	<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+    <div class="profile_img">
+        <div id="crop-avatar">
+            <!-- Current avatar -->
+            {% if user.profile.url != null %}
+                <img class="img-responsive avatar-view" src="{{ user.profile.url }}" alt="Avatar" title="Change the avatar">
+            {% else %}
+                <img class="img-responsive avatar-view" src="{% static 'images/user.png' %}" alt="Avatar" title="Change the avatar">
+            {% endif %}
+        </div>
+    </div>
+    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+
+    <a class="btn btn-success" href="{% url 'Survey:Edit' %}"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+    <hr>
+    <h4>Bio</h4>
+	<div style="width: 180px; height: fit-content;">
+		<p style="word-break: break-all;
+    white-space: normal;"><span>{{ user.description }}</span></p>
+	</div>
+</div>
+    <!-- start of surveys -->
+    <div class="col-md-9 col-sm-9 col-xs-12">
+
+        <div class="profile_title">
+            <div class="col-md-6">
+                <h2>Surveys</h2>
+                <form action="{% url 'Survey:Survey-delete-page' %}" method="post" style=" float: right; display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="survey_id" value="{{ survey.id }}" />
+                    <button type="submit" class="btn btn-danger btn-xs" style="float: right; width: fit-content; height: fit-content">
+                        <span class="glyphicon glyphicon-remove"></span>&nbsp; Delete Surveys
+                    </button>
+                </form>
+            </div>
+        </div>
+	    <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+		    <div class="panel-body">
+			    <table class="table table-striped">
+				    <thead>
+				    <tr>
+					    <th>Survey</th>
+					    <th>Deadline</th>
+				    </tr>
+				    </thead>
+				    <tbody>
+				    {% for survey in  user.survey_set.all  %}
+					    <tr>
+						    <td>{{ survey.title }}</td>
+						    <td>
+						    {% if survey.deadline_Date %}
+							    {{ survey.deadline_Date }}
+						    {% endif %}
+						    {% if not survey.deadline_Date %}
+							    Quick Survey
+						    {% endif %}
+						    </td>
+							<td>
+                                <a href="{% url 'Survey:result-page' id=survey.id %}" style="display: inline-block; float: right; ">
+                                    {% csrf_token %}
+
+                                    <button type="submit" class="btn btn-default btn-small" >
+                                        <span class="glyphicon glyphicon-envelope"></span>&nbsp; View Results
+                                    </button>
+
+                                </a>
+
+								<form action="{% url 'Survey:viewSurvey' id=survey.id %}" method="post" style="display: inline-block; float: right; ">
+									{% csrf_token %}
+
+									<button type="submit" class="btn btn-default btn-small" >
+										<span class="glyphicon glyphicon-envelope"></span>&nbsp; View Survey
+									</button>
+
+								</form>
+							</td>
+					    </tr>
+
+				    {% endfor %}
+
+
+
+				    </tbody>
+			    </table>
+		    </div>
+	    </div>
+    </div>
+    <!-- end of Surveys-->
+
+
+    <!-- start of my contacts-->
+    <div class="col-md-9 col-sm-9 col-xs-12">
+        <div class="profile_title">
+            <div class="col-md-6">
+                <h2>Contact Lists</h2>
+                <form action="{% url 'Survey:delete_contactlist_page' %}" method="post" style=" float: right; display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-xs" style="float: right; width: fit-content; height: fit-content">
+                        <span class="glyphicon glyphicon-remove"></span>&nbsp; Delete Contact Lists/Contacts
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="panel" style="width:100%; height:280px;">
+            <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
+            </a>
+            <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Contact List Name</th>
+	                        <th>Contacts</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                      {% for contactList in  user.contactlist_set.all  %}
+	                      <tr>
+	                        <td>{{ contactList.name }}</td>
+	                      <td>
+		                        {% for contact in contactList.contact_set.all %}
+				                        {{ contact.first_name }} {{ contact.last_name }}<br>
+		                        {% endfor %}
+	                      </td>
+	                      </tr>
+
+                      {% endfor %}
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div></div></div></div></div></div>
+
+
+{% endblock %}

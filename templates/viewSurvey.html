@@ -1,0 +1,55 @@
+{% extends extended_template %}
+{% load staticfiles %}
+
+{% block title %}
+View Survey
+{% endblock %}
+
+{% block content %}
+	<style type="text/css">
+		.question{
+			margin-bottom: 20px;
+		}
+	</style>
+	<div class="right_col" role="main">
+		<div class="">
+			<div class="clearfix"></div>
+
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<h1 class="x_title"> {{ Survey.title }}</h1>
+
+						<div class="x_content" style="text-align: left; margin-left: 6%">
+							{% for question in Survey.question_set.all %}
+								<div class="question">
+								<h1> {{ forloop.counter }} - {{ question.description }}</h1>
+								<div style="width: 100%;">
+								<h3><span style="display:inline-block; width: 60px;"></span>Question Type: {{ question.type }}</h3>
+								</div>
+								{% if question.type == "Multiple Choice" %}
+									<h3><span style="display:inline-block; width: 60px;"></span>Choices:</h3>
+									<h4 style="display: inline-list-item; margin-left: 90px;">
+									{% for choice in question.choice_set.all %}
+										{{ choice.choice }}
+
+									{% endfor %}
+									</h4>
+									</h3>
+								{% endif %}
+
+								</div>
+
+
+
+
+							{% endfor %}
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

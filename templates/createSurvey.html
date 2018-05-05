@@ -1,0 +1,92 @@
+{% extends 'LoggedIn/base.html' %}
+{% load static %}
+{% block title %} Create Survey {% endblock %}
+
+{% block content %}
+<!-- page content -->
+	<div class="right_col" role="main">
+		<div class="">
+			<div class="clearfix"></div>
+
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<h2 >Add Questions</h2>
+							<div class="clearfix"></div>
+						</div>
+						<div class="x_content">
+            <div style="">
+                <div style="">
+                    <div style="text-align: center">
+                        <a href="{% url 'Survey:radio-question-create' id=Survey.id %}" style="text-align: center; margin: 0 50px">
+                            <button class="btn btn-success">
+                                Multiple Choice
+                            </button>
+                        </a>
+
+
+                        <a href="{% url 'Survey:text-question-create' id=Survey.id %}" style="text-align: center; margin: 0 50px">
+                            <button class="btn btn-success">
+                                Text
+                            </button>
+                        </a>
+
+                        <a href="{% url 'Survey:true-or-false-question-create' id=Survey.id %}" style="text-align: center; margin: 0 50px">
+                            <button class="btn btn-success">
+                                True or False
+                            </button>
+                        </a>
+
+                        <a href="{% url 'Survey:range-question-create' id=Survey.id %}" style="text-align: center; margin: 0 50px">
+                            <button class="btn btn-success">
+                                Range
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% if Survey.question_set.count != 0 %}
+	            <table class="table" style="margin-top: 20px; ">
+		            <tbody>
+		            {% for question in Survey.question_set.all %}
+			            <tr>
+				            <td>{{ question.description }}</td><td>{{ question.type }}</td>
+				            <td>
+				            <form action="{% url 'Survey:delete_question' id=Survey.id question_id=question.id %}" method="post" style="display: inline;">
+					            {% csrf_token %}
+					            <input type="hidden" name="question_id" value="{{ question.id }}" />
+					            <button type="submit" class="btn btn-danger btn-xs" style="float: right">
+						            <span class="glyphicon glyphicon-remove"></span>&nbsp;
+					            </button>
+				            </form>
+				            </td>
+			            </tr>
+		            {% endfor %}
+		            </tbody>
+
+	            </table>
+            {% endif %}
+
+            {% if Survey.survey_type == 'Normal' %}
+                <a href="{% url 'Survey:waytoinvite' id=Survey.id %}" style="text-align: center;">
+                    <button class="btn btn-success" style="float: right">
+                        Done
+                    </button>
+                </a>
+            {% elif Survey.survey_type == 'Quick' %}
+                <a href="{% url 'Survey:link-quick-survey' id=Survey.id %}" style="text-align: center;">
+                    <button class="btn btn-success" style="float: right">
+                        Done
+                    </button>
+                </a>
+            {% endif %}
+        </div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- /page content -->
+{% endblock %}

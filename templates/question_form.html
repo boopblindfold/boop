@@ -1,0 +1,44 @@
+{% extends 'LoggedIn/base.html' %}
+{% load static %}
+
+        <!-- /page content -->
+        {%  block title %}Create Question{% endblock %}
+        {%  block question_active %}active{% endblock %}
+
+        {% block content %}
+	        <div class="right_col" role="main">
+	        <div class="">
+		        <div class="clearfix"></div>
+
+		        <div class="row">
+			        <div class="col-md-12 col-sm-12 col-xs-12">
+				        <div class="x_panel">
+
+					        <div class="x_content">
+                                <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <input type=hidden name="surveyid" value="{{ s_id }}">
+	                                {% for field in form %}
+		                                <div class="form-group">
+			                                <div class="col-sm-offset-2 col-sm-10">
+				                                <span class="text-danger small">{{ field.errors }}</span>
+			                                </div>
+			                                <label class="control-label col-sm-2">{{ field.label_tag }}</label>
+			                                <div class="col-sm-10">{{ field }}</div>
+		                                </div>
+	                                {% endfor %}
+	                                <div class="form-group">
+                                        <div class="col-sm-offset-4 col-sm-10">
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+	        </div></div>
+        {% endblock %}
+
