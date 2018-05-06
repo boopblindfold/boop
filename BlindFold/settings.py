@@ -20,7 +20,6 @@ AUTH_USER_MODEL = 'Survey.UserProfile'
 # Application definition
 
 INSTALLED_APPS = [
-    'Outlook',
     'Survey.apps.SurveyConfig',
     'django.contrib.admin',
     'django.contrib.auth',
