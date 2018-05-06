@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: django-env
+    environment: djanfold
     group_suffix: null
 global:
   application_name: Blindfold
