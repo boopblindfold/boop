@@ -13,6 +13,9 @@ SECRET_KEY = 'wle--=*)o*#gus%$_#16r6ck568u$p8zcam6ps2$oc+sf91ypj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+AWS_ACCESS_KEY_ID = "AKIAIQUV55OSZVHVNMNA"
+AWS_SECRET_ACCESS_KEY = "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"
+
 ALLOWED_HOSTS = ['blindfold.cfhdetjzms.us-east-2.elasticbeanstalk.com']
 LOGIN_REDIRECT_URL = '/Survey/profile/'
 AUTH_USER_MODEL = 'Survey.UserProfile'
