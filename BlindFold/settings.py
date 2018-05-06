@@ -13,7 +13,7 @@ SECRET_KEY = 'wle--=*)o*#gus%$_#16r6ck568u$p8zcam6ps2$oc+sf91ypj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://django-env.5wtvwkbcbm.us-east-2.elasticbeanstalk.com/']
+ALLOWED_HOSTS = ['djangoblind.5wtvwkbcbm.us-east-2.elasticbeanstalk.com']
 LOGIN_REDIRECT_URL = '/Survey/profile/'
 AUTH_USER_MODEL = 'Survey.UserProfile'
 
