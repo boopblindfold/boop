@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f3bb7a6-5c74-4a7b-adeb-2dd77b530866" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.elasticbeanstalk/config.yml" afterPath="$PROJECT_DIR$/.elasticbeanstalk/config.yml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="6f3bb7a6-5c74-4a7b-adeb-2dd77b530866" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BlindFold/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+            <state relative-caret-position="255">
+              <caret line="15" column="69" lean-forward="false" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -86,8 +83,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="797" column="33" lean-forward="true" selection-start-line="797" selection-start-column="33" selection-end-line="797" selection-end-column="33" />
+            <state relative-caret-position="87">
+              <caret line="794" column="33" lean-forward="true" selection-start-line="794" selection-start-column="33" selection-end-line="794" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -113,7 +110,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blindfold.env.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="blindfold.env.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.elasticbeanstalk/blindfold.env.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -238,10 +235,10 @@
         <option value="$PROJECT_DIR$/templates/NotLoggedIn/home.html" />
         <option value="$PROJECT_DIR$/Survey/urls.py" />
         <option value="$PROJECT_DIR$/Survey/models.py" />
-        <option value="$PROJECT_DIR$/BlindFold/settings.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/.ebextensions/django.config.yaml" />
         <option value="$PROJECT_DIR$/.elasticbeanstalk/blindfold.env.yml" />
+        <option value="$PROJECT_DIR$/BlindFold/settings.py" />
       </list>
     </option>
   </component>
@@ -534,7 +531,7 @@
       <workItem from="1524596794539" duration="8880000" />
       <workItem from="1524701748468" duration="6764000" />
       <workItem from="1524746677816" duration="1428000" />
-      <workItem from="1525117583452" duration="20994000" />
+      <workItem from="1525117583452" duration="21089000" />
     </task>
     <task id="LOCAL-00001" summary="awws">
       <created>1525567668790</created>
@@ -627,11 +624,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525581727534</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="hhh">
+      <created>1525581957743</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1525581957743</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="455028000" />
+    <option name="totallyTimeSpent" value="455123000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="263" y="0" width="976" height="735" extended-state="1" />
@@ -975,16 +979,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="797" column="33" lean-forward="true" selection-start-line="797" selection-start-column="33" selection-end-line="797" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BlindFold/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        <state relative-caret-position="87">
+          <caret line="794" column="33" lean-forward="true" selection-start-line="794" selection-start-column="33" selection-end-line="794" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1017,6 +1013,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BlindFold/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="69" lean-forward="false" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
           <folding />
         </state>
       </provider>
